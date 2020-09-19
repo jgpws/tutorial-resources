@@ -1,0 +1,8 @@
+.theme-jgd-bizelite .wp-block-media-text:first-of-type {
+	margin-top: -20px;
+}
+
+.theme-jgd-bizelite .wp-block-button__link {
+	border-color: #c65a00;
+	padding: 0.5em 1em;
+}
