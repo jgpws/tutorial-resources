@@ -1,0 +1,8 @@
+Travel Agency Example Colors
+
+Highlight area bg color: #ddffff
+Paragraph highlight color: #004080
+Heading color: #003fff
+Call to action button color: #ff7400
+
+Water bg color: #00b4b4
