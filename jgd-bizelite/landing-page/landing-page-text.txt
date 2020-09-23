@@ -1,0 +1,25 @@
+Travel Agency Landing Page text
+
+Column 1
+Paris
+from $599 / 5 nights
+
+Column 2
+London
+from $599 / 5 nights
+
+Column 3
+New York
+from $499 / 5 nights
+
+About Travel Agency
+We are a budget travel agency located in beautiful downtown Los Angeles. We specialize in creating travel memories for people who don't have to save a small fortune. Let us book your dream trip today!
+
+Where We're Located
+We are located on the fifth floor of the Library Tower.
+
+Address
+1355 Main St.
+Los Angeles, CA 91000
+
+Follow Us on Social Media
