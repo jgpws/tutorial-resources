@@ -49,12 +49,12 @@ function moveTileRight() {
   /* Set next button to disabled if we are on the last image tile;
    * set previous button to enabled
    */
-  if (nextIndex === listLength) {
+  /*if (nextIndex === listLength) {
     nextBtn.setAttribute("disabled", "");
   } else {
     prevBtn.removeAttribute("disabled");
-  }
-  // let disableNextBtn = (nextIndex === listLength ? nextBtn.setAttribute("disabled", "") : prevBtn.removeAttribute("disabled"));
+  }*/
+  let disableNextBtn = (nextIndex === listLength ? nextBtn.setAttribute("disabled", "") : prevBtn.removeAttribute("disabled"));
 }
 
 
@@ -76,12 +76,12 @@ function moveTileLeft() {
     tile[prevIndex].before(tile[prevIndex + 1]);
   }
 
-  if (prevIndex === 0) {
+  /*if (prevIndex === 0) {
     prevBtn.setAttribute("disabled", "");
   } else {
     nextBtn.removeAttribute("disabled");
-  }
-  // let disablePrevBtn = (prevIndex === 0 ? prevBtn.setAttribute("disabled", "") : nextBtn.removeAttribute("disabled"));
+  }*/
+  let disablePrevBtn = (prevIndex === 0 ? prevBtn.setAttribute("disabled", "") : nextBtn.removeAttribute("disabled"));
 }
 
 
