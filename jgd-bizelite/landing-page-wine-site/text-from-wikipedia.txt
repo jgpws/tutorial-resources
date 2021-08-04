@@ -1,0 +1,47 @@
+Text for fictional wine site front page (from Wikipedia)
+https://en.wikipedia.org/wiki/Wine
+
+
+About Red Wine
+
+Red wine gains its color and flavor (notably, tannins) from the grape skin, by allowing the grapes to soak in the extracted juice.
+
+Red wine is made from dark-colored red grape varieties. The actual color of the wine can range from violet, typical of young wines, through red for mature wines, to brown for older red wines.
+
+The juice from most red grapes is actually greenish-white; the red color comes from anthocyanins present in the skin of the grape. A notable exception is the family of rare teinturier varieties, which actually have red flesh and produce red juice.
+
+Source: https://en.wikipedia.org/wiki/Wine#Styles
+
+
+About White Wine
+
+To make white wine, grapes are pressed quickly with the juice immediately drained away from the grape skins.
+
+The grapes used are typically white grape varieties, though red grapes may be used if the winemaker is careful not to let the skin stain the wort during the separation of the pulp-juice. For example, pinot noir (a red grape) is commonly used in champagne.
+
+Dry (low sugar) white wine is the most common, derived from the complete fermentation of the juice, however sweet white wines such as Moscato d'Asti are also made.
+
+Source: https://en.wikipedia.org/wiki/Wine#Styles
+
+
+About Rosé Wine
+
+A rosé wine gains color from red grape skins, but not enough to qualify it as a red wine. It may be the oldest known type of wine, as it is the most straightforward to make with the skin contact method.
+
+The color can range from a pale orange to a vivid near-purple, depending on the varietals used and wine-making techniques.
+
+There are three primary ways to produce rosé wine
+-Skin contact (allowing dark grape skins to stain the wort)
+-Saignée (removing juice from the must early in fermentation and continuing fermentation of the juice separately)
+-Blending of a red and white wine (uncommon and discouraged in most wine growing regions)
+
+Rosé wines have a wide range of sweetness levels from dry Provençal rosé to sweet White Zinfandels and blushes. Rosé wines are made from a wide variety of grapes all over the world.
+
+Source: https://en.wikipedia.org/wiki/Wine#Styles
+
+
+About Orange Wine
+
+Sometimes called amber wines, these are wines made with white grapes but with the skins allowed to soak during pressing, similar to red and rosé wine production. They are notably tannic, and usually made dry.
+
+Source: https://en.wikipedia.org/wiki/Wine#Styles
