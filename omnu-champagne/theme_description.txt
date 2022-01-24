@@ -1,0 +1,1 @@
+A champagne colored GTK theme collection. OmNu-Champagne supports the Cinnamon, GNOME, Openbox and XFCE desktop environments.
