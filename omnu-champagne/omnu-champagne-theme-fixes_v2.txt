@@ -1,0 +1,87 @@
+Fixes for OmNu-Champagne themes
+
+GTK3/GTK2:
+* Remove reference to gtk-dark.css, as there is no dark version
+* In gtk-3.20 and gtk-3.0 folders, open both gtk.gresource.xml files and remove these lines -> <file>dist/gtk-dark.css</file>
+* Then remove the files gtk-dark.css from both the top level (gtk-3.20) and dist folders
+* In the gtk.css file, copy the top @import statement, and paste on a new line just below.
+* Comment out the first line
+* In the newly copied second line, point the import statement to just dist/gtk.css
+
+* Open gtk3-widget-factory
+* Hit Ctrl+Shift+d to open GTK Inspector
+
+Menu
+* Remove padding from menuitems; In GTK Inspector, click Select an object to select the top level menu item
+* Go to Page 2 in gtk-widget-factory
+* Navigate to the inner (dropdown) menu container -> menubar > menuitem > window > menu
+* Note the padding values and their line location in gtk.css
+* Find that line of CSS in your gtk.css file; change padding to 0
+* Type accelerator into the searchbox of your text editor; look for the line that begins with menu menuitem:active accelerator (apprx. line 3626); change the color in this style rule to rgba(30, 31, 32, 0.6)
+
+Dialog
+* Click Select button on the same page
+* Using GTK Inspector, click the on the button; In CSS nodes, note the line location in gtk.css
+* Change the color for suggested-action labels to #1f1b15
+* Change the color at approx. line 1749 to #000000; this is the suggested-action hover color
+
+Toolbar
+Search in your text editor for ! Toolbar to find the toolbar comment; change padding to 6px
+
+Places Sidebar
+* In your gtk.css file, search (Ctrl+F) for placessidebar; at the bottom, add a new background-color for lists inside of the places sidebar -> placessidebar list { background-color: #dbbb90; }
+* In GTK Inspector, select the highlighted row element; note background-color location in gtk.css
+* Just below, add -> placessidebar row:selected {
+      border-left: 6px solid #1f1b15;
+  } for a dark border along the edge of the selected list
+* Search in your text editor for pathbarbox
+* In that section, add a line of code to add padding around buttons and image
+filechooser #pathbarbox button {
+  padding: 3px 6px;
+}
+filechooser #pathbarbox button image {
+  padding-right: 6px;
+}
+
+Notebook Paned section
+* Change the paned section under the notebook widget background color to make it half
+  of the saturation level
+* Add under the ! Notebook section at the bottom
+  notebook paned {
+    background-color: #e4d1b8;
+  }
+
+Scales
+* In GTK Inspector, click one of the scales with the Select an object tool
+* Under CSS nodes, look for the padding in the right panel
+* In gtk.css (around line 6506), change the padding for scale to 6px
+
+Tooltip
+* In your text editor, search for ! tooltip to find the tooltip section
+* In the Tooltip section, remove the line border-radius: 16px; from the first style rule
+* Add the following code to give rounded borders only to composited tooltip borders (denoted by the .csd class)
+tooltip.background {
+  border-radius: 0px;
+}
+
+tooltip.background.csd {
+  border-radius: 16px;
+}
+
+Metacity/Mutter theme
+* Create a symbolic link from parent theme folder (OmNu-Champagne) to /usr/share/themes
+  -> sudo ln -s ~/.themes/OmNu-Champagne /usr/share/themes/OmNu-Champagne
+
+* Use the text editor Find for titlebar_fill_focused and search for it under draw_ops
+* In the metacity-theme-2 and metacity-theme-3 files, remove the include line under titlebar_fill_focused and replace with the following gradient ->
+  <gradient type="vertical" x="0" y="0" width="width" height="height">
+    <color value="#e6d0b2" />
+    <color value="#d0a66e" />
+  </gradient>
+
+* In the same files, search for titlebar_fill_unfocused under draw_ops
+* Remove the include line and replace with the following gradient ->
+  <gradient type="vertical" x="0" y="0" width="width" height="height">
+    <color value="#fdecd6" />
+    <color value="#f7c074" />
+  </gradient>
