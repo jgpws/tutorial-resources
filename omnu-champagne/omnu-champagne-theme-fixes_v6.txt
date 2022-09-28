@@ -1,0 +1,267 @@
+Fixes for OmNu-Champagne themes
+
+
+GTK3/GTK2:
+
+* Remove reference to gtk-dark.css, as there is no dark version
+
+* In gtk-3.20 and gtk-3.0 folders, open both gtk.gresource.xml files and remove these lines -> <file>dist/gtk-dark.css</file>
+
+* Then remove the files gtk-dark.css from both the top level (gtk-3.20) and dist folders
+
+* In the gtk.css file, copy the top @import statement, and paste on a new line just below
+
+* Comment out the first line
+
+* In the newly copied second line, point the import statement to just dist/gtk.css
+
+* Open gtk3-widget-factory
+
+* Hit Ctrl+Shift+d to open GTK Inspector
+
+Menu
+
+* Remove padding from menuitems; In GTK Inspector, click Select an object to select the top level menu item
+
+* Go to Page 2 in gtk-widget-factory
+
+* Navigate to the inner (dropdown) menu container -> menubar > menuitem > window > menu
+
+* Note the padding values and their line location in gtk.css
+
+* Find that line of CSS in your gtk.css file; change padding to 0
+
+* Type accelerator into the searchbox of your text editor; look for the line that begins with menu menuitem:active accelerator (apprx. line 3626); change the color in this style rule to rgba(30, 31, 32, 0.6)
+
+Dialog
+
+* Click Select button on the same page
+
+* Using GTK Inspector, click the on the button; In CSS nodes, note the line location in gtk.css
+
+* Change the color for suggested-action labels to #1f1b15
+
+* Change the color at approx. line 1749 to #000000; this is the suggested-action hover color
+
+Toolbar
+
+Search in your text editor for ! Toolbar to find the toolbar comment; change padding to 6px
+
+Places Sidebar
+
+* In your gtk.css file, search (Ctrl+F) for placessidebar; at the bottom, add a new background-color for lists inside of the places sidebar -> placessidebar list { background-color: #dbbb90; }
+
+* In GTK Inspector, select the highlighted row element; note background-color location in gtk.css
+
+* Just below, add -> placessidebar row:selected {
+      border-left: 6px solid #1f1b15;
+  } for a dark border along the edge of the selected list
+
+* Search in your text editor for pathbarbox
+
+* In that section, add a line of code to add padding around buttons and image
+filechooser #pathbarbox button {
+  padding: 3px 6px;
+}
+filechooser #pathbarbox button image {
+  padding-right: 6px;
+}
+
+Notebook Paned section
+
+* Change the paned section under the notebook widget background color to make it half
+  of the saturation level
+
+* Add under the ! Notebook section at the bottom
+  notebook paned {
+    background-color: #e4d1b8;
+  }
+
+Scales
+
+* In GTK Inspector, click one of the scales with the Select an object tool
+
+* Under CSS nodes, look for the padding in the right panel
+
+* In gtk.css (around line 6506), change the padding for scale to 6px
+
+Tooltip
+
+* In your text editor, search for ! tooltip to find the tooltip section
+
+* In the Tooltip section, remove the line border-radius: 16px; from the first style rule
+
+* Add the following code to give rounded borders only to composited tooltip borders (denoted by the .csd class)
+tooltip.background {
+  border-radius: 0px;
+}
+
+tooltip.background.csd {
+  border-radius: 16px;
+}
+
+
+Metacity/Mutter theme
+
+* Create a symbolic link from parent theme folder (OmNu-Champagne) to /usr/share/themes
+  -> sudo ln -s ~/.themes/OmNu-Champagne /usr/share/themes/OmNu-Champagne
+
+* Use the text editor Find for titlebar_fill_focused and search for it under draw_ops
+
+* In the metacity-theme-2 and metacity-theme-3 files, remove the include line under titlebar_fill_focused and replace with the following gradient ->
+  <gradient type="vertical" x="0" y="0" width="width" height="height">
+    <color value="#e6d0b2" />
+    <color value="#d0a66e" />
+  </gradient>
+
+* In the same files, search for titlebar_fill_unfocused under draw_ops
+
+* Remove the include line and replace with the following gradient ->
+  <gradient type="vertical" x="0" y="0" width="width" height="height">
+    <color value="#fdecd6" />
+    <color value="#f7c074" />
+  </gradient>
+
+
+Openbox theme
+
+* Open the openbox-3 folder in the theme; Open themerc file in a text editor
+
+* Under the Everything else section, change the border.width to 1
+
+* Look for window.active.title.bg and change to a gradient
+    window.active.title.bg: flat gradient vertical
+    window.active.title.bg.color: #e6d0b2
+    window.active.title.bg.colorTo: #d0a66e
+
+* Look for window.inactive.title.bg and add gradient
+    window.inactive.title.bg: flat gradient vertical
+    window.inactive.title.bg.color: #fdecd6
+    window.inactive.title.bg.colorTo: #f7c074
+
+* To get a transparent color behind the window icons, change the unpressed and hover states as follows
+    window.active.button.unpressed.bg: Parentrelative
+    window.active.button.hover.bg: Parentrelative
+    window.inactive.button.unpressed.bg: Parentrelative
+    window.inactive.button.hover.bg: Parentrelative
+
+* Remove the references to the background colors of the window icons
+
+* Change menu.border.color value to #7d6b53
+
+* Add a new line to the menu section to make the border 1px -> menu.border.width: 1
+
+* Change the value of menu.title.bg.color to #7d6b53 and the value of menu.title.text.color to #ffffff
+
+* Change the value of menu.items.active.text.color to #ffffff to have white text against the darker background on hover
+
+* In a command line, type openbox --reconfigure to reload and see the changes
+
+
+XFWM theme files (Optional)
+
+* Change images to match the style of GTK3 CSDs (download completed theme from Theme Resources)
+
+* In themerc file, change the button offset to 8, in order to accommodate the 8 pixel rounded corners
+
+
+URxvt, Xterm and Xfce4-Terminal
+
+* Open Themix
+* Click OmNu-Champagne in the sidebar
+* Click the upper right dropdown (next to Export Icons) to show the Base16-Based Templates option
+* Choose xresources in the Application dropdown button
+* Two choices are either to:
+  - Copy/Paste directly into the home/homefoldername/.Xresources file, replacing some already existing colors, or
+  - Copy the xresources code from Themix
+  - Create a new folder for themes (something like x11-themes)
+  - Create a new file in the x11-themes folder named omnu-champagne
+  - Paste into the omnu-champagne file
+  - Link the file to your .Xresources file with ->
+    #include "x11-themes/omnu-champagne"
+  - An example with some defaults can be found at https://github.com/jgpws/jgd-configs/blob/master/.Xresources
+* Type xrdb ~/.Xresources to reload
+* Close and reopen XTerm or URxvt
+
+* Change the font using this code -> *font: xft:source code pro:size=10:antialias=true
+* Reload .Xresources and reopen the terminals
+* (Optional for URxvt) Adjust the transparency for Native transparency in URxvt; make the shading 10
+* Adjust the text spacing in URxvt -> urxvt.letterSpace: -1
+* Change the scroll style to plain -> urxvt.scrollstyle: plain
+
+* Fix some of the base colors using shades of the base00 color
+  - base01 = #362f25
+  - base02 = #4e4435
+  - base03 = #655845
+  - base04 = #7d6c54
+* Fix the lighter colors using tints of the base05 color
+  - base06 = #ffe5c0
+  - base07 = #ffd499
+
+XCFE4 Terminal
+* Create a new folder in .local/share -> xfce4/terminal/colorschemes
+* In Themix, choose xfce4-terminal from the Base16 Applications dropdown
+* Create a new file in .local/share/xfce4/terminal/colorschemes -> omnu-champagne.theme; Paste into this file
+* Open Xfce4-terminal; Go to Edit -> Preferences
+* In the Presets dropdown, switch to Base16-oomox-OmNu-Champagne
+* In the Appearance tab, change font to Source Code Pro Regular
+* Set the Background to Transparent, 0.90
+* Open .theme file and shorten the name to Base16-OmNu-Champagne
+
+
+Gimp (GTK2) and XFCE4
+
+Gimp
+* In the button fg workarounds section, comment out
+  #widget_class "*.<GtkButton>*<GtkLabel>*" style:highest "murrine-buttonlabel" and 
+  #widget_class "*<GtkCheckButton>*<GtkLabel>*" style:highest "clearlooks-radiocheck-label"
+* Remove these widget classes
+* Do the same for the gtkrc.hidpi file
+* Use Xfce Appearance panel to reload Gimp interface
+
+XFCE4
+* If necessary, in gtk-3.20 -> gtk.css, comment out @import url("resource:///org/numixproject/gtk-3.20/dist/gtk.css") and uncomment url("dist/gtk.css")
+* Open Bluefish and search for ! Xfce styles
+* At the bottom of the section, add the following lines of code to add space around some panel widgets:
+  #clock-button,
+  wnck-pager,
+  #sn-button,
+  #xfce-notification-plugin {
+    margin-left: 6px;
+    margin-right: 6px;
+  }
+* Quit Xfce panel by typing xfce4-panel -q (Making sure the browser window is open at the time)
+* Restart with xfce4-panel command
+* Under the last line of code in the ! Xfce styles section add:
+
+  .xfce4-panel .tasklist .toggle:checked {
+    background-color: #7d6b53;
+    background-image: linear-gradient(to top, #8d785d, #6d5e49);
+    color: mix(#1f1b15, #fad6a5, 0.4);
+  }
+  
+  .xfce4-panel .tasklist .toggle:checked label {
+    color: #ffffff;
+  }
+
+  to change the highlight color to light on dark
+* Above the :checked line of code, add:
+
+  .xfce4-panel .tasklist .toggle {
+    border-radius: 16px;
+    margin: 2px;
+  }
+
+  .xfce4-panel .tasklist .toggle:hover {
+    background-color: #dfc39e;
+    background-image: linear-gradient(to bottom, #ebd9c2, #d4ad7a);
+    border-color: mix(#7d6b53, rgba(31, 27, 21, 0.4), 0.3);
+  }
+
+for button styling on hover to match GTK hover buttons
+* Quit (Ctrl-C) and restart xfce4-panel to see changes
+
+Commit changes to final file
+* In gtk-3.20 -> gtk.css, comment out @import url("dist/gtk.css") and uncomment @import url("resource:///org/numixproject/gtk-3.20/dist/gtk.css")
+* In a terminal within the gtk-3.20 folder, run glib-compile-resources gtk.gresource.xml to re-compile
+* Reload xfce-panel one final time to make sure the new changes have taken effect
