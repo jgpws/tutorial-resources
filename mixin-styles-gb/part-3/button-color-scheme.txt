@@ -1,0 +1,9 @@
+Purple/Bright Yellow button colors
+
+Accent 1 (Blue): #2040c0
+Accent 2 (Magenta): #cd00cd
+Accent 3 (Light Violet): #d5c9f8
+Accent 4 (Soft Pink): #fec8e5
+Accent 5 (Bright Yellow): #f8fe03
+Accent 6 (Dark text): #191919
+Accent 7 (Light text): #ffffff
