@@ -1,0 +1,11 @@
+Purple/Bright Yellow color scheme
+
+Background: #820bbb
+Foreground: #ffffff
+Primary: #820bbb
+Secondary: #efb7fb
+Tertiary: #f8fe03
+Link: #d5c9f8
+Link Hover: #fec8e5
+Link Alt: #4317bf
+Link Alt Hover: #d90274
