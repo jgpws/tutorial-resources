@@ -1,0 +1,207 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Using a Sticky Element Within a CSS Grid</title>
+    <style>
+      html,
+      body {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+        color: hsl(22, 94%, 8%);
+        font-family: sans-serif;
+        line-height: 1.5;
+      }
+
+      a {
+        color: hsl(22, 94%, 26%);
+      }
+
+      .container {
+        display: grid;
+        grid-template-columns: 1fr;
+      }
+
+      .header,
+      .footer {
+        background-color: hsl(22, 94%, 86%);
+      }
+
+      .footer,
+      .content {
+        padding: 1rem 1.5rem;
+      }
+
+      .header {
+        display: flex;
+        flex-direction: column;
+      }
+
+      .header h1,
+      .main-navigation {
+        padding-inline: 1.5rem;
+      }
+
+      .header h1 {
+        color: hsl(22, 94%, 16%);
+        margin: 0;
+      }
+
+      .main-navigation {
+        align-self: center;
+      }
+
+      .main-navigation__list {
+        column-gap: 1rem;
+        display: flex;
+        flex-direction: row;
+        flex-wrap: wrap;
+        justify-content: center;
+        list-style: none;
+        padding: 0;
+      }
+
+      .main-navigation__list li {
+        font-weight: 500;
+      }
+
+      .main-navigation__list a {
+        text-decoration: none;
+      }
+
+      .sticky-element {
+        background-color: hsl(22, 94%, 76%);
+        padding: 1rem;
+      }
+
+      .main {
+        background-color: hsl(22, 94%, 96%);
+      }
+
+      .content {
+        width: calc(100vw - 3rem);
+        margin: 0 auto;
+      }
+
+      @media (min-width: 600px) {
+        .header {
+          flex-direction: row;
+          justify-content: space-between;
+        }
+      }
+
+      @media (min-width: 800px) {
+        .header {
+          justify-content: space-evenly;
+        }
+
+        .content {
+          width: calc(75vw - 3rem);
+        }
+      }
+
+      @media (min-width: 1200px) {
+        .content {
+          width: calc(50vw - 3rem);
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <div class="container">
+      <header class="header">
+        <h1>My Site</h1>
+        <nav class="main-navigation">
+          <ul class="main-navigation__list">
+            <li>Home</li>
+            <li><a href="#">Products</a></li>
+            <li><a href="#">About Us</a></li>
+            <li><a href="#">Contact Us</a></li>
+          </ul>
+        </nav>
+      </header>
+      <div class="sticky-element">This element sticks to the content area!</div>
+      <main id="main" class="main">
+        <div class="content">
+          <h2>First Heading</h2>
+          <p>
+            Lorem ipsum dolor sit amet, <a href="#">consectetur</a> adipiscing
+            elit. Nullam efficitur turpis at nulla bibendum, ac pretium sapien
+            vestibulum. Integer blandit viverra ante, nec rhoncus augue. In non
+            malesuada ligula. Nam ac leo purus. Integer maximus arcu vitae
+            congue dapibus. Vestibulum ante ipsum primis in faucibus orci luctus
+            et ultrices posuere cubilia curae; Fusce id dolor lectus. Curabitur
+            lobortis justo id lorem aliquam volutpat. Etiam bibendum pretium
+            risus in cursus. Praesent egestas mauris massa, sit amet tempor
+            mauris tempus a. Nulla facilisi. Cras elementum quis elit ac ornare.
+            Orci varius natoque penatibus et magnis dis parturient montes,
+            nascetur ridiculus mus. Donec eget pharetra mauris. Donec quis nisi
+            ut tellus sagittis tincidunt at <a href="#">ut sapien</a>.
+          </p>
+          <h2>Second Heading</h2>
+          <p>
+            Morbi ullamcorper finibus est, vitae pellentesque elit feugiat ut.
+            Mauris tincidunt felis vitae dolor egestas pellentesque. Proin ac
+            neque a erat fermentum rutrum vel eu leo. Aliquam convallis erat
+            eleifend tempor consequat. Nam sollicitudin posuere est, eget
+            imperdiet enim feugiat sed. Pellentesque habitant morbi tristique
+            senectus et netus et malesuada fames ac turpis egestas. Pellentesque
+            ultrices pretium congue. Fusce in dui porttitor, hendrerit arcu sed,
+            ornare velit. Fusce aliquam sit amet neque a commodo. Donec
+            venenatis libero magna. Praesent ultricies velit ac volutpat
+            accumsan. Quisque erat nisl, varius ultrices accumsan nec,
+            ullamcorper in nisi. Aliquam sit amet tristique sapien, sed
+            consectetur ipsum. In non laoreet justo, a condimentum nulla. Morbi
+            at semper justo, quis gravida arcu. Phasellus molestie, lectus id
+            tempor dapibus, augue leo pretium nulla, ac placerat lectus ligula
+            eget nunc.
+          </p>
+          <h2>Third Heading</h2>
+          <p>
+            Morbi consectetur augue eu pulvinar interdum. Quisque auctor
+            sagittis porttitor. Integer faucibus leo eros, quis rhoncus nisl
+            sodales a. Vivamus imperdiet consequat turpis sit amet rutrum. Orci
+            varius natoque penatibus et magnis dis parturient montes, nascetur
+            ridiculus mus. Proin lacinia mollis massa, sit amet vehicula leo
+            malesuada at. Ut neque arcu, sollicitudin et nibh vitae, dignissim
+            consectetur augue. Fusce dictum, nibh eu bibendum scelerisque, urna
+            purus hendrerit ex, a rutrum orci odio non mi.
+          </p>
+
+          <p>
+            Aliquam erat volutpat. Maecenas massa libero, volutpat ut felis non,
+            viverra aliquam leo. Ut a metus a erat lobortis pharetra. Sed quis
+            ex metus. Proin sed purus et est molestie accumsan at in nulla.
+            Integer ullamcorper metus odio, id molestie ligula accumsan nec.
+            Vivamus luctus eleifend mauris, in suscipit lectus convallis sed.
+            Duis eu pellentesque ex, a congue eros. Nam dolor diam, mollis quis
+            volutpat non, blandit non enim.
+          </p>
+          <h2>Fourth Heading</h2>
+          <p>
+            Cras pulvinar aliquam lorem, non commodo enim euismod eget. Aliquam
+            hendrerit eu ligula eget bibendum. Integer sagittis, eros vel
+            convallis feugiat, neque sem dignissim metus, eget posuere ante diam
+            nec ante. Aliquam venenatis non felis at egestas. Pellentesque
+            finibus, nulla sed ultrices ultrices, elit felis iaculis turpis, vel
+            pretium erat orci consectetur sem. Donec id porta neque. Cras
+            malesuada vulputate tincidunt. Mauris eleifend augue erat, at
+            finibus ante volutpat eget. Pellentesque porttitor est diam, vitae
+            tincidunt metus malesuada eu. Donec condimentum nunc orci, non
+            ultricies metus commodo suscipit. In in odio sit amet justo
+            ullamcorper fermentum et vel felis. Curabitur condimentum rhoncus
+            laoreet. Vestibulum dignissim ligula ac justo lacinia tempor. Aenean
+            aliquam egestas sodales. Pellentesque at finibus odio. Morbi feugiat
+            nulla at magna sagittis varius.
+          </p>
+        </div>
+      </main>
+      <div class="footer">
+        <p>Some information for the footer.</p>
+        <p>&copy; 2025 My Site</p>
+      </div>
+    </div>
+  </body>
+</html>
