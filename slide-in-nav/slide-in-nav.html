@@ -1,0 +1,316 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Creating a Slide-In Header/Footer Navigation Widget</title>
+    <style>
+      html,
+      body {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+        color: #311721;
+        font-family: sans-serif;
+        line-height: 1.5;
+      }
+
+      a {
+        color: #314767;
+      }
+
+      :is(h2, h3, h4, h5, h6) {
+        color: #476731;
+      }
+
+      .container {
+        display: grid;
+        grid-template-columns: 1fr;
+      }
+
+      .header,
+      .footer {
+        background-color: #673147;
+        color: #ffffff;
+      }
+
+      .header a,
+      .footer a {
+        color: #e8ced9;
+      }
+
+      .footer,
+      .content {
+        padding: 1rem 1.5rem;
+      }
+
+      .header {
+        display: flex;
+        flex-direction: column;
+      }
+
+      .header h1,
+      .main-navigation {
+        padding-inline: 1.5rem;
+      }
+
+      .header h1 {
+        margin: 0;
+      }
+
+      .main-navigation {
+        align-self: center;
+      }
+
+      .main-navigation__list {
+        display: flex;
+        flex-direction: row;
+        flex-wrap: wrap;
+        justify-content: center;
+        list-style: none;
+        margin: 0;
+        padding: 0;
+      }
+
+      .main-navigation__list li {
+        font-weight: 500;
+      }
+
+      .current-page {
+        border-bottom: 2px solid #76ad52;
+      }
+
+      .current-page,
+      .main-navigation__link {
+        display: block;
+        padding: 0.75rem 1rem;
+      }
+
+      .main-navigation__list li,
+      .main-navigation__link {
+        box-sizing: border-box;
+      }
+
+      .main-navigation__link {
+        text-decoration: none;
+      }
+
+      .main-navigation__link:hover,
+      .main-navigation__link:focus {
+        background-color: #502636;
+      }
+
+      .header,
+      .main-navigation,
+      .current-page,
+      .main-navigation__link {
+        min-height: 3rem;
+      }
+
+      .slide-nav-container,
+      .main {
+        grid-column: 1 / 2;
+        grid-row: 2 / 3;
+      }
+
+      .slide-nav-container {
+        align-self: start;
+        background-color: #dedede;
+        justify-self: end;
+        padding: 1rem;
+        position: sticky;
+        top: 0;
+        width: min-content;
+        z-index: 1;
+      }
+
+      .main {
+        background-color: #fdfafb;
+      }
+
+      .content {
+        width: calc(100vw - 3rem);
+        margin: 0 auto;
+      }
+
+      .footer {
+        display: flex;
+        flex-direction: column;
+      }
+
+      .footer ul {
+        list-style: none;
+        padding-left: 0;
+      }
+
+      .footer ul ul {
+        padding-left: 1rem;
+      }
+
+      .footer a {
+        text-decoration: none;
+      }
+
+      .footer a:hover,
+      .footer a:focus {
+        text-decoration: underline;
+      }
+
+      @media (min-width: 600px) {
+        .header,
+        .footer {
+          flex-direction: row;
+          column-gap: 1.5rem;
+        }
+
+        .header {
+          justify-content: space-between;
+        }
+
+        .footer {
+          justify-content: space-evenly;
+        }
+      }
+
+      @media (min-width: 800px) {
+        .header {
+          justify-content: space-evenly;
+        }
+
+        .content {
+          width: calc(75vw - 3rem);
+        }
+      }
+
+      @media (min-width: 1200px) {
+        .content {
+          width: calc(50vw - 3rem);
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <div class="container">
+      <header class="header">
+        <h1>My Site</h1>
+        <nav class="main-navigation">
+          <ul class="main-navigation__list">
+            <li class="current-page">Home</li>
+            <li><a href="#" class="main-navigation__link">Products</a></li>
+            <li><a href="#" class="main-navigation__link">About Us</a></li>
+            <li><a href="#" class="main-navigation__link">Contact Us</a></li>
+          </ul>
+        </nav>
+      </header>
+      <div class="slide-nav-container">
+        This element sticks to the content area!
+      </div>
+      <main id="main" class="main">
+        <div class="content">
+          <h2>First Heading</h2>
+          <p>
+            Lorem ipsum dolor sit amet, <a href="#">consectetur</a> adipiscing
+            elit. Nullam efficitur turpis at nulla bibendum, ac pretium sapien
+            vestibulum. Integer blandit viverra ante, nec rhoncus augue. In non
+            malesuada ligula. Nam ac leo purus. Integer maximus arcu vitae
+            congue dapibus. Vestibulum ante ipsum primis in faucibus orci luctus
+            et ultrices posuere cubilia curae; Fusce id dolor lectus. Curabitur
+            lobortis justo id lorem aliquam volutpat. Etiam bibendum pretium
+            risus in cursus. Praesent egestas mauris massa, sit amet tempor
+            mauris tempus a. Nulla facilisi. Cras elementum quis elit ac ornare.
+            Orci varius natoque penatibus et magnis dis parturient montes,
+            nascetur ridiculus mus. Donec eget pharetra mauris. Donec quis nisi
+            ut tellus sagittis tincidunt at <a href="#">ut sapien</a>.
+          </p>
+          <h2>Second Heading</h2>
+          <p>
+            Morbi ullamcorper finibus est, vitae pellentesque elit feugiat ut.
+            Mauris tincidunt felis vitae dolor egestas pellentesque. Proin ac
+            neque a erat fermentum rutrum vel eu leo. Aliquam convallis erat
+            eleifend tempor consequat. Nam sollicitudin posuere est, eget
+            imperdiet enim feugiat sed. Pellentesque habitant morbi tristique
+            senectus et netus et malesuada fames ac turpis egestas. Pellentesque
+            ultrices pretium congue. Fusce in dui porttitor, hendrerit arcu sed,
+            ornare velit. Fusce aliquam sit amet neque a commodo. Donec
+            venenatis libero magna. Praesent ultricies velit ac volutpat
+            accumsan. Quisque erat nisl, varius ultrices accumsan nec,
+            ullamcorper in nisi. Aliquam sit amet tristique sapien, sed
+            consectetur ipsum. In non laoreet justo, a condimentum nulla. Morbi
+            at semper justo, quis gravida arcu. Phasellus molestie, lectus id
+            tempor dapibus, augue leo pretium nulla, ac placerat lectus ligula
+            eget nunc.
+          </p>
+          <h2>Third Heading</h2>
+          <p>
+            Morbi consectetur augue eu pulvinar interdum. Quisque auctor
+            sagittis porttitor. Integer faucibus leo eros, quis rhoncus nisl
+            sodales a. Vivamus imperdiet consequat turpis sit amet rutrum. Orci
+            varius natoque penatibus et magnis dis parturient montes, nascetur
+            ridiculus mus. Proin lacinia mollis massa, sit amet vehicula leo
+            malesuada at. Ut neque arcu, sollicitudin et nibh vitae, dignissim
+            consectetur augue. Fusce dictum, nibh eu bibendum scelerisque, urna
+            purus hendrerit ex, a rutrum orci odio non mi.
+          </p>
+
+          <p>
+            Aliquam erat volutpat. Maecenas massa libero, volutpat ut felis non,
+            viverra aliquam leo. Ut a metus a erat lobortis pharetra. Sed quis
+            ex metus. Proin sed purus et est molestie accumsan at in nulla.
+            Integer ullamcorper metus odio, id molestie ligula accumsan nec.
+            Vivamus luctus eleifend mauris, in suscipit lectus convallis sed.
+            Duis eu pellentesque ex, a congue eros. Nam dolor diam, mollis quis
+            volutpat non, blandit non enim.
+          </p>
+          <h2>Fourth Heading</h2>
+          <p>
+            Cras pulvinar aliquam lorem, non commodo enim euismod eget. Aliquam
+            hendrerit eu ligula eget bibendum. Integer sagittis, eros vel
+            convallis feugiat, neque sem dignissim metus, eget posuere ante diam
+            nec ante. Aliquam venenatis non felis at egestas. Pellentesque
+            finibus, nulla sed ultrices ultrices, elit felis iaculis turpis, vel
+            pretium erat orci consectetur sem. Donec id porta neque. Cras
+            malesuada vulputate tincidunt. Mauris eleifend augue erat, at
+            finibus ante volutpat eget. Pellentesque porttitor est diam, vitae
+            tincidunt metus malesuada eu. Donec condimentum nunc orci, non
+            ultricies metus commodo suscipit. In in odio sit amet justo
+            ullamcorper fermentum et vel felis. Curabitur condimentum rhoncus
+            laoreet. Vestibulum dignissim ligula ac justo lacinia tempor. Aenean
+            aliquam egestas sodales. Pellentesque at finibus odio. Morbi feugiat
+            nulla at magna sagittis varius.
+          </p>
+        </div>
+      </main>
+      <footer class="footer">
+        <div class="footer__copy">
+          <p>Some information for the footer.</p>
+          <p>&copy; 2025 My Site</p>
+        </div>
+        <nav class="footer__nav">
+          <ul>
+            <li>
+              <a href="#">Products</a>
+              <ul>
+                <li><a href="#">E-books</a></li>
+                <li><a href="#">Online Courses</a></li>
+              </ul>
+            </li>
+            <li>
+              <a href="#">About Us</a>
+              <ul>
+                <li><a href="#">Our Company</a></li>
+                <li><a href="#">Our Mission</a></li>
+              </ul>
+            </li>
+            <li>
+              <a href="#">Contact Us</a>
+              <ul>
+                <li><a href="#">By Phone</a></li>
+                <li><a href="#">On Social Media</a></li>
+              </ul>
+            </li>
+          </ul>
+        </nav>
+      </footer>
+    </div>
+  </body>
+</html>
