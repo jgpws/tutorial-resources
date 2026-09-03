@@ -1,0 +1,29 @@
+// clean.js (1st iteration)
+/* Script to remove all files and folders from the /dist folder */
+
+const fs = require("fs");
+const path = require("path");
+
+const distPath = path.join(__dirname, "dist");
+const zipPath = path.join(__dirname, "the-m-x.zip");
+
+// 1. Delete the old zip file if it exists
+if (fs.existsSync(zipPath)) {
+  fs.unlinkSync(zipPath);
+}
+
+// 2. Safely empty the contents of the dist folder without deleting dist itself
+if (fs.existsSync(distPath)) {
+  const files = fs.readdirSync(distPath);
+
+  for (const file of files) {
+    const currentPath = path.join(distPath, file);
+    // rmSync handles both files and nested directories recursively
+    fs.rmSync(currentPath, { recursive: true, force: true });
+  }
+} else {
+  // If dist doesn't exist at all, create it
+  fs.mkdirSync(distPath, { recursive: true });
+}
+
+console.log("🧹 Cleaned dist contents and old zip file safely.");
