@@ -1,0 +1,40 @@
+// clean.js (2nd iteration)
+/* Script to remove all files and folders from the /dist folder */
+
+const fs = require("fs");
+const path = require("path");
+
+const distPath = path.join(__dirname, "dist");
+
+// Function 1: Initial full clean
+function fullClean() {
+  if (fs.existsSync(distPath)) {
+    const files = fs.readdirSync(distPath);
+    for (const file of files) {
+      fs.rmSync(path.join(distPath, file), { recursive: true, force: true });
+    }
+  } else {
+    fs.mkdirSync(distPath, { recursive: true });
+  }
+  console.log('🧹 Cleaned dist contents safely.');
+}
+
+// Function 2: Post-build cleanup (removes everything except the zip)
+function postBuildClean() {
+  if (fs.existsSync(distPath)) {
+    const files = fs.readdirSync(distPath);
+    for (const file of files) {
+      if (file !== "the-m-x.zip") {
+        fs.rmSync(path.join(distPath, file), { recursive: true, force: true });
+      }
+    }
+    console.log('✨ Post-build cleanup complete. Only the-m-x.zip remains in dist.');
+  }
+}
+
+// Check which mode we are running based on terminal arguments
+if (process.argv[2] === "--post") {
+  postBuildClean();
+} else {
+  fullClean();
+}
